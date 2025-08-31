@@ -1,6 +1,6 @@
 # FAST selfhosted timetable
 
-![alt text](src/image.png)
+![main image](src/image.png)
 ## about
 
 - alternative to 3rd party apps that might get unmaintained (you can simply just copy the sheet)
@@ -8,22 +8,36 @@
 - saves your query 
 - manipulate to your liking
 
-# getting started
+## getting started
 
-- get it from [here](https://docs.google.com/spreadsheets/d/1tS3MANigEZKlMoJuJcROvijN5_4Y_A_dcVHz7wOVGoM/edit?gid=0#gid=0) 
-- `make a copy` to make it editable
+- get it from [here](https://docs.google.com/spreadsheets/d/1tS3MANigEZKlMoJuJcROvijN5_4Y_A_dcVHz7wOVGoM/edit?gid=0#gid=0), goto `File > make a copy` to make it editable
 
-![alt text](src/image-3.png)
+![copy document prompt](src/image-3.png)
+
+- this might copy the attached 
+- each cell holds a single query
+- meaning, if you have electives that dont have your class name you will specify that in a different cell
+
+
+
+>[!note] Example:
+> `BAI-3A` and `FOA BDS-3B` to only fetch `FOA`
+
+
+## limitations
+- the sheet can not detect `merged cells`
+  - hence classes like labs will only appear as once
+- the `script` is made on ad-hoc basis, use it at your own risk
 
 
 #  Calendar integration setup
 
 - you can further add the slots to a google calendar
 - allowing you to recieve notifications, automating your work
-- using the `code.js` present
 
 ## features
 -  events added are recurring, specified in the google sheets
+-  can show other empty classes if your slot is empty 
 
 ## steps
 
@@ -31,17 +45,17 @@
 
 - open settings create new calendar
 
-![alt text](src/image-1.png)
+![add calendar menu](src/image-1.png)
 
 - it will show up on the left pane 
 
-![alt text](src/image-2.png)
+![existing calendars list](src/image-2.png)
 
 - go in the calendar's settings 
 - move down to `integrate calendar`
 - and get `calendar id`
 
-![alt text](src/image-4.png)
+![inegrate calendar](src/image-4.png)
 
 > [!Note]
 > keep this `calendar id` as the script wil use it as reference
@@ -50,7 +64,7 @@
 
 - open your copied calendar's `extensions > Apps Script`
 
-![alt text](src/image-5.png)
+![sheet extensions](src/image-5.png)
 
 - this opens the associated `google script`
 
@@ -81,3 +95,26 @@ this part: `1tS3MANigEZKlMoJuJcROvijN5_4Y_A_dcVHz7wOVGoM`
 
 > [!warning]
 > copy your own `calendar id` and `sheet id`  to prevent any bugs
+
+### 4. run the script
+
+- will be present in the header
+![script header](src/image-6.png)
+- make sure the `syncToCalendar` function is selected
+
+### 5. add triggers
+
+- allows the google calendar to auto update
+- meaning, no need constantly visit `script.google.com`
+- open the `triggers` in the left pane
+
+![trigger](src/image-7.png)
+
+- `add a trigger` at the bottom right 
+
+![add a trigger](src/image-8.png)
+
+- now add a trigger of your own choice,
+- the trigger can be `time-driven` or `event-driven`
+
+
